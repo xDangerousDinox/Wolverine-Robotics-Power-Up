@@ -1,11 +1,11 @@
 package org.usfirst.frc.team949.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
-public class ArmPID extends PIDSubsystem {
+public class ArmPID extends Subsystem {
 
     // Initialize your subsystem here
     public ArmPID() {

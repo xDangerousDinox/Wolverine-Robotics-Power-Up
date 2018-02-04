@@ -3,13 +3,11 @@ package org.usfirst.frc.team949.robot.subsystems;
 import org.usfirst.frc.team949.robot.RobotMap;
 import org.usfirst.frc.team949.robot.commands.JoyStickDrive;
 
-import com.ctre.CANTalon;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Spark;					
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
