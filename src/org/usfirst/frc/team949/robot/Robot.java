@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team949.robot.commands.JoyStickDrive;
 import org.usfirst.frc.team949.robot.commands.TurnGoLeft;
+import org.usfirst.frc.team949.robot.subsystems.ArmPID;
 import org.usfirst.frc.team949.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team949.robot.subsystems.Pickup;
 
@@ -26,6 +27,7 @@ public class Robot extends TimedRobot {
 	// Please keep these as public unless you have a good reason.
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Pickup pickup = new Pickup();
+	public static final ArmPID arm = new ArmPID();
 	public static OI oi;
 
 	private Command autonomousCommand;
