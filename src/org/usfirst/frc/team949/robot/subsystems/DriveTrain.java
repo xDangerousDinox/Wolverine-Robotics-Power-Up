@@ -62,6 +62,10 @@ public class DriveTrain extends Subsystem {
 	public void drive(double moveValue, double rotateValue) {
 		this.drive.arcadeDrive(moveValue, rotateValue);
 	}
+	public void tank(double leftMoveValue, double rightMoveValue) 
+	{
+		this.drive.tankDrive(leftMoveValue, rightMoveValue);
+	}
 	
 	// ACCESSORS
 	public ADXRS450_Gyro getGyro() 

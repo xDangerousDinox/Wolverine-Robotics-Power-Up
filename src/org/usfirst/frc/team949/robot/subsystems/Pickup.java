@@ -44,5 +44,6 @@ public class Pickup extends Subsystem {
 		this.rightPickupMotor.set(rate);
 		this.leftPickupMotor.set(rate);
 	}
+	
 }
 

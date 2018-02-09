@@ -28,6 +28,7 @@ public class OI {
 		
 	}
 	
+	// Drive Stick
 	public double getDriveX() 
 	{
 		return this.driveStick.getX();
@@ -40,18 +41,37 @@ public class OI {
 	{
 		return this.driveStick.getZ();
 	}
+	public double getDriveThrottle() 
+	{
+		return this.driveStick.getThrottle();
+	}
 	
 	public boolean isDriveButtonDown(int buttonNumber)
 	{
 		return this.driveStick.getRawButton(buttonNumber);
 	}
+	
+	// Operator Stick
+	public double getOperatorX()
+	{
+		return this.operatorStick.getX();
+	}
+	public double getOperatorY() 
+	{
+		return this.operatorStick.getY();
+	}
+	public double getOperatorZ() 
+	{
+		return this.operatorStick.getZ();
+	}
+	public double getOperatorThrottle() 
+	{
+		return this.operatorStick.getThrottle();
+	}
+	
 	public boolean isOperatorButtonDown(int buttonNumber) 
 	{
 		return this.operatorStick.getRawButton(buttonNumber);
-	}
-	
-	public double getArmY() {
-		return this.operatorStick.getY();
 	}
 	
 	//// CREATING BUTTONS hahahah

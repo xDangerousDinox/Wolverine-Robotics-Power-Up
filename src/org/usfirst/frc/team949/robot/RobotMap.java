@@ -19,7 +19,10 @@ public class RobotMap {
 	// Pickup
 	public final static int leftPickupMotor = 6;
 	public final static int rightPickupMotor = 7;
+	public final static int wristMotor = 8;
 	
+	// Arm
+	public final static int armMotor = 9;
 
 	// PNEUMATICS
 	// SENSORS
