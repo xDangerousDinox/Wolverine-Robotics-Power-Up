@@ -39,10 +39,14 @@ public class Pickup extends Subsystem {
 	 * Calls the .set() method on both pickup motors
 	 * @param rate the double that goes in someMotor.set(rate); as parameter.
 	 */
-	private void setBothMotors(double rate) 
+	public void setBothMotors(double rate) 
 	{
-		this.rightPickupMotor.set(rate);
-		this.leftPickupMotor.set(rate);
+		setPickup(rate, rate);
+	}
+	public void setPickup(double leftRate, double rightRate) 
+	{
+		this.rightPickupMotor.set(leftRate);
+		this.leftPickupMotor.set(rightRate);
 	}
 	
 }
