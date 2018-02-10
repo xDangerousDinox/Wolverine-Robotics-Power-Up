@@ -26,5 +26,6 @@ public class RobotMap {
 
 	// PNEUMATICS
 	// SENSORS
+	public final static int armEncoder = 10;
 
 }

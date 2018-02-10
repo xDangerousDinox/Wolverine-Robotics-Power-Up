@@ -16,8 +16,7 @@ public class JoyStickArm extends Command {
 	
 	public JoyStickArm() {
 		requires(Robot.arm);
-		
-		pid = new PIDController(1/  1.5, 0.000465, 0, g, d -> output = d);
+		pid = new PIDController(1, 0.000465, 0, Robot.arm.getGyro(), d -> output = d);
 		pid.enable();
 	}
 

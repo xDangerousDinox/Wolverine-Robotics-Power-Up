@@ -74,6 +74,10 @@ public class OI {
 		return this.operatorStick.getRawButton(buttonNumber);
 	}
 	
+	public double getThrottleAngle() {
+		return this.operatorStick.getThrottle() + 1 * 45;
+	}
+	
 	//// CREATING BUTTONS hahahah
 	// One type of button is a joystick button which is any button on a
 	//// joystick.

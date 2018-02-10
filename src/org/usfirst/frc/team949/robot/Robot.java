@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team949.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -43,6 +44,9 @@ public class Robot extends TimedRobot {
 		this.chooser.addDefault("Default Auto", new JoyStickDrive());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		CameraServer.getInstance().addAxisCamera("10.9.49.104");
+		SmartDashboard.putNumber("Arm Angle", 0);
+		SmartDashboard.getData("Arm Angle");
 //		// TODO: Put this in DisabledPeriodic or AutonomousInit
 //		String gameData;
 //		gameData = DriverStation.getInstance().getGameSpecificMessage();

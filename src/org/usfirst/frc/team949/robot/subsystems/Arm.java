@@ -6,7 +6,9 @@ import org.usfirst.frc.team949.robot.commands.JoyStickArm;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
 /**
  *
@@ -14,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Arm extends Subsystem {
 
     // Initialize your subsystem here
-//	private final ADXRS450_Gyro g = new ADXRS450_Gyro();
+	private Encoder s = new Encoder();
 	private WPI_TalonSRX armMotor;
     public Arm() {
     	armMotor = new WPI_TalonSRX(RobotMap.armMotor);
@@ -23,6 +25,10 @@ public class Arm extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         setDefaultCommand(new JoyStickArm());
+    }
+    
+    public ADXRS450_Gyro getGyro() {
+    	return g;
     }
     
     
