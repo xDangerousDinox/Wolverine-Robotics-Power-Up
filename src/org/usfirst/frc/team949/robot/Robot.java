@@ -80,12 +80,15 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
+		
+		String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
+		switch(autoSelected) {
+		case "My Auto": autonomousCommand = new MyAutoCommand();
+		break; 
+		case "Default Auto": 
+		default:
+		autonomousCommand = new ExampleCommand(); break; }
+		 
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
@@ -96,9 +99,10 @@ public class Robot extends TimedRobot {
 		final char L = 'L';
 		final char R = 'R';
 		char firstSwitch = gameData.charAt(0);
+		char scale = gameData.charAt(1);
 		if(firstSwitch == L)
 		{
-			new TurnGoLeft();
+			
 		} else {
 			System.out.println("Not implemented yet");
 		}
