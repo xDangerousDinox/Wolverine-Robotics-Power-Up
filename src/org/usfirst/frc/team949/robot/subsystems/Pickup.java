@@ -1,6 +1,7 @@
 package org.usfirst.frc.team949.robot.subsystems;
 
 import org.usfirst.frc.team949.robot.RobotMap;
+import org.usfirst.frc.team949.robot.commands.PickupControl;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -15,7 +16,7 @@ public class Pickup extends Subsystem {
 	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new PickupControl());
     }
 	
 	public Pickup() 

@@ -47,15 +47,7 @@ public class Robot extends TimedRobot {
 		CameraServer.getInstance().addAxisCamera("10.9.49.104");
 		SmartDashboard.putNumber("Arm Angle", 0);
 		SmartDashboard.getData("Arm Angle");
-//		// TODO: Put this in DisabledPeriodic or AutonomousInit
-//		String gameData;
-//		gameData = DriverStation.getInstance().getGameSpecificMessage();
-//		if(gameData.charAt(0) == 'L')
-//		{
-//			new TurnGoLeft();
-//		} else {
-//			System.out.println("Not implemented yet");
-//		}
+		
 	}
 
 	/** 
@@ -87,7 +79,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-
+		String gameData = DriverStation.getInstance().getGameSpecificMessage();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -98,6 +90,18 @@ public class Robot extends TimedRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+	}
+	private void autonomousSwitchLogic(String gameData) 
+	{	
+		final char L = 'L';
+		final char R = 'R';
+		char firstSwitch = gameData.charAt(0);
+		if(firstSwitch == L)
+		{
+			new TurnGoLeft();
+		} else {
+			System.out.println("Not implemented yet");
+		}
 	}
 
 	/**
