@@ -26,7 +26,7 @@ public class PickupControl extends Command {
     	int pov = Robot.oi.getOperatorPOV();
     	
     	// Hand logic
-    	if(Robot.oi.isOperatorButtonDown(12))
+    	if(Robot.oi.isOperatorButtonDown(12)) // Out
     	{
     		Robot.pickup.setBothMotors(-1.0);
     	}
