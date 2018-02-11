@@ -10,7 +10,11 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class JoyStickArm extends Command {
-	
+
+	private final static double Y_THRESHOLD = 0.2;
+	private final static double DEFAULT_MULTIPLIER = 1.0;
+	private final static double NERF_MULTIPLIER = 0.5;
+
 	public JoyStickArm() {
 		requires(Robot.arm);
 	}
@@ -23,8 +27,18 @@ public class JoyStickArm extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.arm.move(Robot.oi.getOperatorY()); // TODO: Not finalized control system yet.
-		
+		double input = -Robot.oi.getOperatorY();
+		if (Math.abs(input) >= Y_THRESHOLD) // Down
+		{
+			if (Robot.arm.getEncoderPosition() > (100. / 360 * 4096)) {
+				input *= NERF_MULTIPLIER;
+			}
+			if (Robot.arm.getEncoderPosition() < (30. / 360 * 4096)) {
+				input = NERF_MULTIPLIER * Math.max(input, 0);
+			}
+			Robot.arm.move(DEFAULT_MULTIPLIER * input); // TODO: Not finalized
+														// control system yet.
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

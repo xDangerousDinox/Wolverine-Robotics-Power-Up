@@ -12,21 +12,21 @@ public class RobotMap {
 	// MOTORS
 	// DriveTrain
 	public final static int leftDriveMotor1 = 1;
-	public final static int leftDriveMotor2 = 2;
+	public final static int leftDriveMotor2 = 0;
 	public final static int rightDriveMotor1 = 3;
-	public final static int rightDriveMotor2 = 4;
+	public final static int rightDriveMotor2 = 2;
 
 	// Pickup
 	public final static int leftPickupMotor = 6;
 	public final static int rightPickupMotor = 7;
-	public final static int wristMotor = 8;
+	public final static int wristMotor = 9;
 	
 	// Arm
-	public final static int armMotor = 9;
+	public final static int armMotor = 8;
 	
 	// Climber
-	public final static int climberMotor1 = 10;
-	public final static int climberMotor2 = 11;
+	public final static int climberMotor1 = 4;
+	public final static int climberMotor2 = 5;
 
 	// PNEUMATICS
 

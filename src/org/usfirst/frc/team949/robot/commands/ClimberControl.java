@@ -20,11 +20,11 @@ public class ClimberControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.isOperatorButtonDown(7)) // Up
+    	if(Robot.oi.isOperatorButtonDown(8)) // Up
     	{
     		Robot.climber.setBothMotors(1.0);
     	}
-    	else if(Robot.oi.isOperatorButtonDown(8)) // Down 
+    	else if(Robot.oi.isOperatorButtonDown(7)) // Down 
     	{
     		Robot.climber.setBothMotors(-1.0);
     	}
