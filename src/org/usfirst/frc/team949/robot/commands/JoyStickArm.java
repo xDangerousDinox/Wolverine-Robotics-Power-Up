@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class JoyStickArm extends Command {
 
-	private final static double Y_THRESHOLD = 0.2;
+	private final static double Y_THRESHOLD = 0.9;
 	private final static double DEFAULT_MULTIPLIER = 1.0;
 	private final static double NERF_MULTIPLIER = 0.5;
 
@@ -30,12 +30,15 @@ public class JoyStickArm extends Command {
 		double input = -Robot.oi.getOperatorY();
 		if (Math.abs(input) >= Y_THRESHOLD) // Down
 		{
-			if (Robot.arm.getEncoderPosition() > (100. / 360 * 4096)) {
-				input *= NERF_MULTIPLIER;
-			}
-			if (Robot.arm.getEncoderPosition() < (30. / 360 * 4096)) {
-				input = NERF_MULTIPLIER * Math.max(input, 0);
-			}
+			/*
+			 * Needs set up for encoders first.
+			 */
+//			if (Robot.arm.getEncoderPosition() > (100. / 360 * 4096)) {
+//				input *= NERF_MULTIPLIER;
+//			}
+//			if (Robot.arm.getEncoderPosition() < (30. / 360 * 4096)) {
+//				input = NERF_MULTIPLIER * Math.max(input, 0);
+//			}
 			Robot.arm.move(DEFAULT_MULTIPLIER * input); // TODO: Not finalized
 														// control system yet.
 		}
