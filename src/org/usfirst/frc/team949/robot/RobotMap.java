@@ -23,10 +23,11 @@ public class RobotMap {
 	
 	// Arm
 	public final static int armMotor = 9;
+	
+	// Climber
+	public final static int climberMotor1 = 10;
+	public final static int climberMotor2 = 11;
 
 	// PNEUMATICS
-	// SENSORS
-	public final static int armEncoderForward = 1;
-	public final static int armEncoderBackward = 2;
 
 }

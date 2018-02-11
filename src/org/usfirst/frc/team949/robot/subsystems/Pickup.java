@@ -14,6 +14,8 @@ public class Pickup extends Subsystem {
 	private WPI_TalonSRX rightPickupMotor;
 	private WPI_TalonSRX leftPickupMotor;
 	
+	private WPI_TalonSRX wristMotor;
+	
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         setDefaultCommand(new PickupControl());
@@ -23,6 +25,10 @@ public class Pickup extends Subsystem {
 	{
 		this.rightPickupMotor = new WPI_TalonSRX(RobotMap.rightPickupMotor);
 		this.leftPickupMotor = new WPI_TalonSRX(RobotMap.leftPickupMotor);
+		this.wristMotor = new WPI_TalonSRX(RobotMap.wristMotor);
+		
+		rightPickupMotor.setInverted(true);
+		leftPickupMotor.setInverted(false);
 	}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -33,6 +39,9 @@ public class Pickup extends Subsystem {
 	public void putOut(){
 		setBothMotors(1.0);
 	}
+	/**
+	 * Set both motors to 0.0
+	 */
 	public void stop(){
 		setBothMotors(0.0);
 	}
@@ -44,10 +53,26 @@ public class Pickup extends Subsystem {
 	{
 		setPickup(rate, rate);
 	}
+	/**
+	 * Calls the .set() method with wheels rotating same direction.
+	 * @param rate the double that goes in someMotor.set(rate); as parameter.
+	 */
+	public void setRotateBothMotors(double rate) 
+	{
+		setPickup(rate, -rate);
+	}
 	public void setPickup(double leftRate, double rightRate) 
 	{
 		this.rightPickupMotor.set(leftRate);
 		this.leftPickupMotor.set(rightRate);
+	}
+	/**
+	 * Calls the .set() method with wristMotor.
+	 * @param rate the double that goes in someMotor.set(rate); as parameter.
+	 */
+	public void setWrist(double rate) 
+	{
+		this.wristMotor.set(rate);
 	}
 	
 }

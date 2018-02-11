@@ -21,8 +21,41 @@ public class PickupControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double[] leftRightInputs = Constants.arcadeToTank(Robot.oi.getOperatorY(), Robot.oi.getOperatorZ());
-    	Robot.pickup.setPickup(leftRightInputs[0], leftRightInputs[1]);
+//    	double[] leftRightInputs = Constants.arcadeToTank(Robot.oi.getOperatorY(), Robot.oi.getOperatorZ());
+//    	Robot.pickup.setPickup(leftRightInputs[0], leftRightInputs[1]);
+    	int pov = Robot.oi.getOperatorPOV();
+    	
+    	// Hand logic
+    	if(Robot.oi.isOperatorButtonDown(12))
+    	{
+    		Robot.pickup.setBothMotors(-1.0);
+    	}
+    	else if(Robot.oi.isOperatorButtonDown(11)) // In
+    	{
+    		Robot.pickup.setBothMotors(1.0);
+    	}
+    	else if(Robot.oi.isOperatorButtonDown(10)) // Right 
+    	{
+    		Robot.pickup.setRotateBothMotors(1.0);
+    	}
+    	else if(Robot.oi.isOperatorButtonDown(9)) // Left
+    	{
+    		Robot.pickup.setRotateBothMotors(-1.0);
+    	}
+    	else
+    	{
+    		Robot.pickup.stop();
+    	}
+    	
+    	// Wrist logic
+    	if(Robot.oi.isOperatorButtonDown(3)) // Down
+    	{
+    		Robot.pickup.setWrist(-1.0);
+    	}
+    	else if(Robot.oi.isOperatorButtonDown(5)) // Up
+    	{
+    		Robot.pickup.setWrist(1.0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

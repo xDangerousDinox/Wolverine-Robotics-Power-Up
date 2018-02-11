@@ -1,5 +1,7 @@
 package org.usfirst.frc.team949.robot.commands;
 
+import java.io.File;
+
 import org.usfirst.frc.team949.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -11,7 +13,6 @@ public class JoyStickArm extends Command {
 	
 	public JoyStickArm() {
 		requires(Robot.arm);
-		
 	}
 
 	// Called just before this Command runs the first time
@@ -22,7 +23,8 @@ public class JoyStickArm extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.arm.move(Robot.oi.getDriveThrottle()); // TODO: Not finalized control system yet.
+		Robot.arm.move(Robot.oi.getOperatorY()); // TODO: Not finalized control system yet.
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

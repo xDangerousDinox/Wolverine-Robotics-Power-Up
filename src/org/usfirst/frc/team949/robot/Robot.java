@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team949.robot.commands.JoyStickDrive;
 
 import org.usfirst.frc.team949.robot.subsystems.Arm;
+import org.usfirst.frc.team949.robot.subsystems.Climber;
 import org.usfirst.frc.team949.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team949.robot.subsystems.Pickup;
 
@@ -29,6 +30,7 @@ public class Robot extends TimedRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Pickup pickup = new Pickup();
 	public static final Arm arm = new Arm();
+	public static final Climber climber = new Climber();
 	public static OI oi;
 
 	private Command autonomousCommand;
@@ -80,14 +82,14 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-		
-		String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
-		switch(autoSelected) {
-		case "My Auto": autonomousCommand = new MyAutoCommand();
-		break; 
-		case "Default Auto": 
-		default:
-		autonomousCommand = new ExampleCommand(); break; }
+//		
+//		String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
+//		switch(autoSelected) {
+//		case "My Auto": autonomousCommand = new MyAutoCommand();
+//		break; 
+//		case "Default Auto": 
+//		default:
+//		autonomousCommand = new ExampleCommand(); break; }
 		 
 
 		// schedule the autonomous command (example)

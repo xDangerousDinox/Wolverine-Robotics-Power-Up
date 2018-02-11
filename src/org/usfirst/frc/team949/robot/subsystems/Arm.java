@@ -15,26 +15,28 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Arm extends Subsystem {
 
     // Initialize your subsystem here
-	private Encoder armEnc;
 	private WPI_TalonSRX armMotor;
 	
-	private PIDController pid;
-	private double output;
+//	private PIDController pid;
+//	private double output;
 	
     public Arm() {
-    	armEnc = new Encoder(RobotMap.armEncoderForward, RobotMap.armEncoderBackward);
     	armMotor = new WPI_TalonSRX(RobotMap.armMotor);
     	
-    	pid = new PIDController(1, 0.000465, 0, armEnc, d -> output = d);
-		pid.enable();
+//    	pid = new PIDController(1, 0.000465, 0, armEnc, d -> output = d);
+//		pid.enable();
     }
 
     public void initDefaultCommand() {
         setDefaultCommand(new JoyStickArm());
     }
     
-    public Encoder getEncoder() {
-    	return armEnc;
+    public double getEncoderPosition() {
+    	return armMotor.getSelectedSensorPosition(0);
+    }
+    public double getEncoderVelocity() 
+    {
+    	return armMotor.getSelectedSensorVelocity(0);
     }
     
     
