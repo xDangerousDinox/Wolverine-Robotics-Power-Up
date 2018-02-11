@@ -7,7 +7,7 @@ import org.usfirst.frc.team949.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * 
  */
 public class JoyStickArm extends Command {
 
