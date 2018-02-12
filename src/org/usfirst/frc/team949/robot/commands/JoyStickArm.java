@@ -39,9 +39,15 @@ public class JoyStickArm extends Command {
 //			if (Robot.arm.getEncoderPosition() < (30. / 360 * 4096)) {
 //				input = NERF_MULTIPLIER * Math.max(input, 0);
 //			}
-			Robot.arm.move(DEFAULT_MULTIPLIER * input); // TODO: Not finalized
+			
+			Robot.arm.move(DEFAULT_MULTIPLIER * Math.signum(input) * ((Math.abs(input)-Y_THRESHOLD) / (1 - Y_THRESHOLD))); // TODO: Not finalized
 														// control system yet.
 		}
+		else 
+		{
+			Robot.arm.move(0);
+		}
+		System.out.println(Robot.arm.getEncoderPosition());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

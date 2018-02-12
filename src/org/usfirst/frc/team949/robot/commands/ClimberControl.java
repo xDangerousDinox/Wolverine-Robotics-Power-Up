@@ -28,6 +28,10 @@ public class ClimberControl extends Command {
     	{
     		Robot.climber.setBothMotors(-1.0);
     	}
+    	else 
+    	{
+    		Robot.climber.setBothMotors(0.0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

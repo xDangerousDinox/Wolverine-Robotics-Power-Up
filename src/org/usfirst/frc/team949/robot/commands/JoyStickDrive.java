@@ -28,7 +28,7 @@ public class JoyStickDrive extends Command {
 		double yInput = Robot.oi.getDriveY();
 		double zInput = Robot.oi.getDriveZ();
 
-		yInput = Y_NERF * (Math.abs(yInput) < Y_THRESHOLD ? 0 : yInput);
+		yInput = Y_NERF * (Math.abs(yInput) < Y_THRESHOLD ? 0 : yInput); 
 		zInput = Z_NERF * (Math.abs(zInput) < Z_THRESHOLD ? 0 : zInput);
 
 		Robot.driveTrain.arcade(yInput, zInput);
