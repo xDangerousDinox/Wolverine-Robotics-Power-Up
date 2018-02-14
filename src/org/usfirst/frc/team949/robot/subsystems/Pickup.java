@@ -38,7 +38,7 @@ public class Pickup extends Subsystem {
 		setBothMotors(-1.0);
 	}
 
-	public void putOut() {
+	public void putOut() { 
 		setBothMotors(1.0);
 	}
 
