@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -45,14 +46,14 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		this.chooser.addDefault("Default Auto", new JoyStickDrive());
 		// chooser.addObject("My Auto", new MyAutoCommand());
-//		SmartDashboard.putData("Auto mode", chooser);
-//		CameraServer.getInstance().addAxisCamera("10.9.49.104");
-//		SmartDashboard.putNumber("Arm Angle", 0);
-//		SmartDashboard.getData("Arm Angle");
-//		
+		// SmartDashboard.putData("Auto mode", chooser);
+		// CameraServer.getInstance().addAxisCamera("10.9.49.104");
+		// SmartDashboard.putNumber("Arm Angle", 0);
+		// SmartDashboard.getData("Arm Angle");
+		//
 	}
 
-	/** 
+	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
 	 * the robot is disabled.
@@ -82,29 +83,28 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-//		
-//		String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
-//		switch(autoSelected) {
-//		case "My Auto": autonomousCommand = new MyAutoCommand();
-//		break; 
-//		case "Default Auto": 
-//		default:
-//		autonomousCommand = new ExampleCommand(); break; }
-		 
+		//
+		// String autoSelected = SmartDashboard.getString("Auto Selector",
+		// "Default");
+		// switch(autoSelected) {
+		// case "My Auto": autonomousCommand = new MyAutoCommand();
+		// break;
+		// case "Default Auto":
+		// default:
+		// autonomousCommand = new ExampleCommand(); break; }
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}
-	private void autonomousSwitchLogic(String gameData) 
-	{	
+
+	private void autonomousSwitchLogic(String gameData) {
 		final char L = 'L';
 		final char R = 'R';
 		char firstSwitch = gameData.charAt(0);
 		char scale = gameData.charAt(1);
-		if(firstSwitch == L)
-		{
-			
+		if (firstSwitch == L) {
+
 		} else {
 			System.out.println("Not implemented yet");
 		}
@@ -134,6 +134,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		System.out.println(
+				(driveTrain.getLeftVelocity() + driveTrain.getRightVelocity()) / 2 + "\t" + Timer.getFPGATimestamp());
 	}
 
 	/**
@@ -141,6 +143,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-		
+
 	}
 }

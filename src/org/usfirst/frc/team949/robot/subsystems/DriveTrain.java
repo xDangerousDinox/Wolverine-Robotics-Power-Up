@@ -29,7 +29,6 @@ public class DriveTrain extends Subsystem {
 
 	private SpeedControllerGroup r;
 	private SpeedControllerGroup l;
-
 	private WPI_TalonSRX r0, r1, l0, l1;
 
 	public void initDefaultCommand() {
@@ -42,10 +41,10 @@ public class DriveTrain extends Subsystem {
 		this.g = new ADXRS450_Gyro();
 		gyroCalibrate();
 
-		this.r0 = new WPI_TalonSRX(RobotMap.rightDriveMotor1);
-		this.r1 = new WPI_TalonSRX(RobotMap.rightDriveMotor2);
-		this.l0 = new WPI_TalonSRX(RobotMap.leftDriveMotor1);
-		this.l1 = new WPI_TalonSRX(RobotMap.leftDriveMotor2);
+		this.r0 = new WPI_TalonSRX(RobotMap.rigthMaster);
+		this.r1 = new WPI_TalonSRX(RobotMap.rightSlave);
+		this.l0 = new WPI_TalonSRX(RobotMap.leftMaster);
+		this.l1 = new WPI_TalonSRX(RobotMap.leftSlave);
 
 		setUpEncoders();
 
@@ -58,6 +57,18 @@ public class DriveTrain extends Subsystem {
 		this.drive = new DifferentialDrive(l, r);
 
 		this.drive.setSafetyEnabled(false);
+		// new Thread(() -> {
+		// double max = 0;
+		// while (true) {
+		// double speed = (l0.getSelectedSensorVelocity(0) +
+		// r0.getSelectedSensorVelocity(0)) / 2;
+		// if (speed > max) {
+		// max = speed;
+		// System.out.println(max);
+		// }
+		// }
+		// }).run();
+
 	}
 
 	private void setUpEncoders() {

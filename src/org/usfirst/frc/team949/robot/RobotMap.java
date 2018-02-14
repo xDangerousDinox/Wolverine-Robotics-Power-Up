@@ -11,10 +11,10 @@ public class RobotMap {
 
 	// MOTORS
 	// DriveTrain
-	public final static int leftDriveMotor1 = 1;
-	public final static int leftDriveMotor2 = 0;
-	public final static int rightDriveMotor1 = 3;
-	public final static int rightDriveMotor2 = 2;
+	public final static int leftMaster = 1;
+	public final static int leftSlave = 0;
+	public final static int rigthMaster = 3;
+	public final static int rightSlave = 2;
 
 	// Pickup
 	public final static int leftPickupMotor = 6;

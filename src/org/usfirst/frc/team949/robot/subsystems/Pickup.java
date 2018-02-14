@@ -13,12 +13,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Pickup extends Subsystem {
 	private WPI_TalonSRX rightPickupMotor;
 	private WPI_TalonSRX leftPickupMotor;
-
+	private final double ratio = 2 * 4096 * 2 * Math.PI;// encode tick per wrist
+														// rev
 	private WPI_TalonSRX wristMotor;
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		setDefaultCommand(new PickupControl());
+
 	}
 
 	public Pickup() {
