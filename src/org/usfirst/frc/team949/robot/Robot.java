@@ -81,8 +81,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
+		String testPosition = "L"; // L M R TODO: Find a way to do it from SmartDashboard
+		
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-//		
+		autonomousCommand = autonomousSwitchLogic(gameData);
+		
 //		String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 //		switch(autoSelected) {
 //		case "My Auto": autonomousCommand = new MyAutoCommand();
@@ -96,18 +99,112 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}
-	private void autonomousSwitchLogic(String gameData) 
+	private Command autonomousSwitchLogic(char startingPosition, String targetScoring, String gameData) 
 	{	
 		final char L = 'L';
+		final char M = 'M';
 		final char R = 'R';
 		char firstSwitch = gameData.charAt(0);
 		char scale = gameData.charAt(1);
-		if(firstSwitch == L)
+		
+		switch (targetScoring)
 		{
-			
-		} else {
-			System.out.println("Not implemented yet");
-		}
+		case "Switch":
+			if(firstSwitch == L)
+			{
+				if(startingPosition == L) 
+				{
+					return new LeftSideLeftSwitch();
+				}
+				else if(startingPosition == M) 
+				{
+					return new MiddleSideLeftSwitch();
+				}
+				else if(startingPosition == R) 
+				{
+					return new RightSideLeftSwitch();
+				}
+			}
+			else if(firstSwitch == R) 
+			{
+				if(startingPosition == L) 
+				{
+					return new LeftSideRightSwitch();
+				}
+				else if(startingPosition == M) 
+				{
+					return new MiddleSideRightSwitch();
+				}
+				else if(startingPosition == R) 
+				{
+					return new RightSideRightSwitch();
+				}
+			}
+			else 
+			{
+				System.out.println("Something went wrong ");
+				throw new UnsupportedOperationException();
+			}
+			break;
+		case "Scale":
+			if(scale == L)
+			{
+				if(startingPosition == L) 
+				{
+					return new LeftSideLeftScale();
+				}
+				else if(startingPosition == M) 
+				{
+					return new MiddleSideLeftScale();
+				}
+				else if(startingPosition == R) 
+				{
+					return new RightSideLeftScale();
+				}
+			}
+			else if(scale == R) 
+			{
+				if(startingPosition == L) 
+				{
+					return new LeftSideLeftScale();
+				}
+				else if(startingPosition == M) 
+				{
+					return new MiddleSideLeftScale();
+				}
+				else if(startingPosition == R) 
+				{
+					return new RightSideLeftScale();
+				}
+			}
+			else 
+			{
+				System.out.println("Something went wrong ");
+				throw new UnsupportedOperationException();
+			}
+			break;
+		
+		case "AutoLine":
+			if(startingPosition == L) 
+			{
+				return new LeftAutoLine();
+			}
+			else if(startingPosition == M) 
+			{
+				return new MiddleAutoLine();
+			}
+			else if(startingPosition == R) 
+			{
+				return new RightAutoLine();
+			}
+			break;
+		case "Default":
+			default:
+				return new Wait();
+		}		
+		
+		
+		return targetCommand;
 	}
 
 	/**
