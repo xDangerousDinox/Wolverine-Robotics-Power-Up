@@ -44,12 +44,11 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		oi = new OI();
 		this.chooser.addDefault("Default Auto", new JoyStickDrive());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-//		SmartDashboard.putData("Auto mode", chooser);
-//		CameraServer.getInstance().addAxisCamera("10.9.49.104");
-//		SmartDashboard.putNumber("Arm Angle", 0);
-//		SmartDashboard.getData("Arm Angle");
-//		
+		SmartDashboard.putData("Auto mode", chooser);
+		CameraServer.getInstance().addAxisCamera("10.9.49.104");
+		SmartDashboard.putNumber("Arm Angle", 0);
+		SmartDashboard.getData("Arm Angle");
+		
 	}
 
 	/** 
