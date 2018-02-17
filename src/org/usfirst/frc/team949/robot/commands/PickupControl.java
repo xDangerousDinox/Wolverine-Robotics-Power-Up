@@ -49,8 +49,22 @@ public class PickupControl extends Command {
 
 		// Wrist Logic (Down)
 		double zInput = Robot.oi.getOperatorZ();
-		zInput = (Math.abs(zInput) < Z_THRESHOLD ? 0 : (Math.signum(zInput) * ((Math.abs(zInput)-Z_THRESHOLD) / (1 - Z_THRESHOLD))));
+		zInput = (Math.abs(zInput) < Z_THRESHOLD ? 0
+				: (Math.signum(zInput) * ((Math.abs(zInput) - Z_THRESHOLD) / (1 - Z_THRESHOLD))));
 		Robot.pickup.setWrist(MULTIPLIER * zInput);
+
+		// Grab logic
+		if (Robot.oi.operatorStick.getRawButtonPressed(1)) {
+			Robot.pickup.extend();
+		}
+		if (Robot.oi.operatorStick.getRawButtonPressed(2)) {
+			Robot.pickup.unextend();
+
+		}
+		if (Robot.oi.operatorStick.getRawButtonReleased(1) || Robot.oi.operatorStick.getRawButtonReleased(2)) {
+			Robot.pickup.die();
+		}
+
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

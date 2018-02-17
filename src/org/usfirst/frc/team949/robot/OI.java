@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	
-	private Joystick driveStick;
-	private Joystick operatorStick;
+	public final Joystick driveStick;
+	public final Joystick operatorStick;
 	
 	private Button driveTrigger;
 	private Button driveSideButton;
@@ -77,6 +77,7 @@ public class OI {
 	{
 		return this.operatorStick.getPOV();
 	}
+
 	
 	//// CREATING BUTTONS hahahah
 	// One type of button is a joystick button which is any button on a

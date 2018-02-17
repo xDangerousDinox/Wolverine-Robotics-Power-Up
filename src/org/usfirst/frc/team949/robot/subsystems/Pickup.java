@@ -5,6 +5,8 @@ import org.usfirst.frc.team949.robot.commands.PickupControl;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,6 +18,9 @@ public class Pickup extends Subsystem {
 
 	private WPI_TalonSRX wristMotor;
 
+	private Compressor compressor;
+	private DoubleSolenoid handRotator;
+
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		setDefaultCommand(new PickupControl());
@@ -26,8 +31,12 @@ public class Pickup extends Subsystem {
 		this.leftPickupMotor = new WPI_TalonSRX(RobotMap.leftPickupMotor);
 		this.wristMotor = new WPI_TalonSRX(RobotMap.wristMotor);
 
+		compressor = new Compressor();
+		handRotator = new DoubleSolenoid(RobotMap.handRotatorSolenoidChannelIn, RobotMap.handRotatorSolenoidChannelOut);
+
 		rightPickupMotor.setInverted(true);
 		leftPickupMotor.setInverted(false);
+		compressor.setClosedLoopControl(true);
 	}
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -38,6 +47,18 @@ public class Pickup extends Subsystem {
 
 	public void putOut() {
 		setBothMotors(1.0);
+	}
+
+	public void extend() {
+		handRotator.set(DoubleSolenoid.Value.kForward);
+	}
+
+	public void unextend() {
+		handRotator.set(DoubleSolenoid.Value.kReverse);
+	}
+
+	public void die() {
+		handRotator.set(DoubleSolenoid.Value.kOff);
 	}
 
 	/**

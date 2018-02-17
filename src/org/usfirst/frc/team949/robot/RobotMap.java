@@ -29,5 +29,7 @@ public class RobotMap {
 	public final static int climberMotor2 = 5;
 
 	// PNEUMATICS
+	public final static int handRotatorSolenoidChannelIn = 0;
+	public final static int handRotatorSolenoidChannelOut = 1;
 
 }
