@@ -84,7 +84,7 @@ public class Robot extends TimedRobot {
 		char testPosition = 'L'; // L M R TODO: Find a way to do it from SmartDashboard
 		String targetScoring = "Scale"; // Switch Scale AutoLine TODO: Find a way to do it from SmartDashboard
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-		//autonomousCommand = autonomousSwitchLogic(testPosition, targetScoring, gameData);
+//		autonomousCommand = autonomousSwitchLogic(testPosition, targetScoring, gameData);
 		
 //		String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 //		switch(autoSelected) {

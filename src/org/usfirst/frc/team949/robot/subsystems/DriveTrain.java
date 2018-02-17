@@ -38,7 +38,6 @@ public class DriveTrain extends Subsystem {
 	}
 
 	public DriveTrain() {
-		// Christoff contributed all of the "this." code in this class
 		this.g = new ADXRS450_Gyro();
 		gyroCalibrate();
 
