@@ -81,10 +81,10 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-		String testPosition = "L"; // L M R TODO: Find a way to do it from SmartDashboard
-		
+		char testPosition = 'L'; // L M R TODO: Find a way to do it from SmartDashboard
+		String targetScoring = "Scale"; // Switch Scale AutoLine TODO: Find a way to do it from SmartDashboard
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-		autonomousCommand = autonomousSwitchLogic(gameData);
+		autonomousCommand = autonomousSwitchLogic(testPosition, targetScoring, gameData);
 		
 //		String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 //		switch(autoSelected) {
@@ -140,11 +140,6 @@ public class Robot extends TimedRobot {
 					return new RightSideRightSwitch();
 				}
 			}
-			else 
-			{
-				System.out.println("Something went wrong ");
-				throw new UnsupportedOperationException();
-			}
 			break;
 		case "Scale":
 			if(scale == L)
@@ -176,11 +171,6 @@ public class Robot extends TimedRobot {
 				{
 					return new RightSideLeftScale();
 				}
-			}
-			else 
-			{
-				System.out.println("Something went wrong ");
-				throw new UnsupportedOperationException();
 			}
 			break;
 		
