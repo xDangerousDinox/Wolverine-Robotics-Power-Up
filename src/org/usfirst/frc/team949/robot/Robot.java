@@ -84,7 +84,7 @@ public class Robot extends TimedRobot {
 		char testPosition = 'L'; // L M R TODO: Find a way to do it from SmartDashboard
 		String targetScoring = "Scale"; // Switch Scale AutoLine TODO: Find a way to do it from SmartDashboard
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-		autonomousCommand = autonomousSwitchLogic(testPosition, targetScoring, gameData);
+		//autonomousCommand = autonomousSwitchLogic(testPosition, targetScoring, gameData);
 		
 //		String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 //		switch(autoSelected) {
@@ -99,103 +99,113 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}
-	private Command autonomousSwitchLogic(char startingPosition, String targetScoring, String gameData) 
-	{	
-		final char L = 'L';
-		final char M = 'M';
-		final char R = 'R';
-		char firstSwitch = gameData.charAt(0);
-		char scale = gameData.charAt(1);
-		
-		switch (targetScoring)
-		{
-		case "Switch":
-			if(firstSwitch == L)
-			{
-				if(startingPosition == L) 
-				{
-					return new LeftSideLeftSwitch();
-				}
-				else if(startingPosition == M) 
-				{
-					return new MiddleSideLeftSwitch();
-				}
-				else if(startingPosition == R) 
-				{
-					return new RightSideLeftSwitch();
-				}
-			}
-			else if(firstSwitch == R) 
-			{
-				if(startingPosition == L) 
-				{
-					return new LeftSideRightSwitch();
-				}
-				else if(startingPosition == M) 
-				{
-					return new MiddleSideRightSwitch();
-				}
-				else if(startingPosition == R) 
-				{
-					return new RightSideRightSwitch();
-				}
-			}
-			break;
-		case "Scale":
-			if(scale == L)
-			{
-				if(startingPosition == L) 
-				{
-					return new LeftSideLeftScale();
-				}
-				else if(startingPosition == M) 
-				{
-					return new MiddleSideLeftScale();
-				}
-				else if(startingPosition == R) 
-				{
-					return new RightSideLeftScale();
-				}
-			}
-			else if(scale == R) 
-			{
-				if(startingPosition == L) 
-				{
-					return new LeftSideLeftScale();
-				}
-				else if(startingPosition == M) 
-				{
-					return new MiddleSideLeftScale();
-				}
-				else if(startingPosition == R) 
-				{
-					return new RightSideLeftScale();
-				}
-			}
-			break;
-		
-		case "AutoLine":
-			if(startingPosition == L) 
-			{
-				return new LeftAutoLine();
-			}
-			else if(startingPosition == M) 
-			{
-				return new MiddleAutoLine();
-			}
-			else if(startingPosition == R) 
-			{
-				return new RightAutoLine();
-			}
-			break;
-		case "Default":
-			default:
-				return new Wait();
-		}		
-		
-		
-		return targetCommand;
-	}
+//	private Command autonomousSwitchLogic(char startingPosition, String targetScoring, String gameData) 
+//	{	
+//		final char L = 'L';
+//		final char M = 'M';
+//		final char R = 'R';
+//		char firstSwitch = gameData.charAt(0);
+//		char scale = gameData.charAt(1);
+//		
+//		switch (targetScoring)
+//		{
+//		case "Switch":
+//			if(firstSwitch == L)
+//			{
+//				if(startingPosition == L) 
+//				{
+//					return new LeftSideLeftSwitch();
+//				}
+//				else if(startingPosition == M) 
+//				{
+//					return new MiddleSideLeftSwitch();
+//				}
+//				else if(startingPosition == R) 
+//				{
+//					return new RightSideLeftSwitch();
+//				}
+//			}
+//			else if(firstSwitch == R) 
+//			{
+//				if(startingPosition == L) 
+//				{
+//					return new LeftSideRightSwitch();
+//				}
+//				else if(startingPosition == M) 
+//				{
+//					return new MiddleSideRightSwitch();
+//				}
+//				else if(startingPosition == R) 
+//				{
+//					return new RightSideRightSwitch();
+//				}
+//			}
+//			else 
+//			{
+//				System.out.println("Something went wrong ");
+//				throw new UnsupportedOperationException();
+//			}
+//			break;
+//		case "Scale":
+//			if(scale == L)
+//			{
+//				if(startingPosition == L) 
+//				{
+//					return new LeftSideLeftScale();
+//				}
+//				else if(startingPosition == M) 
+//				{
+//					return new MiddleSideLeftScale();
+//				}
+//				else if(startingPosition == R) 
+//				{
+//					return new RightSideLeftScale();
+//				}
+//			}
+//			else if(scale == R) 
+//			{
+//				if(startingPosition == L) 
+//				{
+//					return new LeftSideLeftScale();
+//				}
+//				else if(startingPosition == M) 
+//				{
+//					return new MiddleSideLeftScale();
+//				}
+//				else if(startingPosition == R) 
+//				{
+//					return new RightSideLeftScale();
+//				}
+//			}
+//			else 
+//			{
+//				System.out.println("Something went wrong ");
+//				throw new UnsupportedOperationException();
+//			}
+//			break;
+//		
+//		case "AutoLine":
+//			if(startingPosition == L) 
+//			{
+//				return new LeftAutoLine();
+//			}
+//			else if(startingPosition == M) 
+//			{
+//				return new MiddleAutoLine();
+//			}
+//			else if(startingPosition == R) 
+//			{
+//				return new RightAutoLine();
+//			}
+//			break;
+//		case "Default":
+//			default:
+//				return new Wait();
+//		}		
+//		
+//		
+//		return targetCommand;
+//	}
 
 	/**
 	 * This function is called periodically during autonomous
@@ -215,12 +225,27 @@ public class Robot extends TimedRobot {
 			autonomousCommand.cancel();
 	}
 
+	
+	private double leftMaxVelocity; // TODO: ONLY FOR TRAJECTORY CONSTANT TESTING. PLEASE DELETE LATER.
+	private double rightMaxVelocity; // TODO: ONLY FOR TRAJECTORY CONSTANT TESTING. PLEASE DELETE LATER.
+	
 	/**
 	 * This function is called periodically during operator control
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
+		Scheduler.getInstance().run(); // Keep this
+		
+		double leftRate = driveTrain.getLeftVelocity();
+		double rightRate = driveTrain.getRightVelocity();
+		if(leftRate > leftMaxVelocity) 
+		{
+			leftMaxVelocity = leftRate;
+		}
+		if(rightRate > rightMaxVelocity) 
+		{
+			rightMaxVelocity = rightRate;
+		}
 	}
 
 	/**
