@@ -245,7 +245,7 @@ public class Robot extends TimedRobot {
 		{
 			rightMaxVelocity = rightRate;
 		}
-		if(oi.isOperatorButtonDown(buttonNumber))
+		
 	}
 
 	/**
