@@ -32,6 +32,17 @@ public class ClimberControl extends Command {
     	{
     		Robot.climber.setBothMotors(0.0);
     	}
+    	
+    	
+    	// Servo Hook logic
+    	if(Robot.oi.isOperatorButtonDown(4)) // Release
+    	{
+    		Robot.climber.releaseHook();
+    	}
+    	else if(Robot.oi.isOperatorButtonDown(6)) // Retract
+    	{
+    		Robot.climber.lockHook();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

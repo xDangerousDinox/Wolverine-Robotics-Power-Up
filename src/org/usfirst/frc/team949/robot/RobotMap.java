@@ -31,5 +31,8 @@ public class RobotMap {
 	// PNEUMATICS
 	public final static int handRotatorSolenoidChannelIn = 0;
 	public final static int handRotatorSolenoidChannelOut = 1;
+	
+	// SERVO
+	public final static int hookLockServo = 0;
 
 }
