@@ -25,7 +25,7 @@ public class HardTurn extends TimedCommand {
 			Robot.driveTrain.arcade(0.0, rotateValue);
 		}
 		else {
-			Robot.driveTrain.arcade(0.0, rotateValue);
+			Robot.driveTrain.arcade(0.0, -rotateValue);
 		}
 	}
 
