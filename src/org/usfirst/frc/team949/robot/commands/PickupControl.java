@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class PickupControl extends Command {
 
 	private final static double Z_THRESHOLD = 0.9;
-	private final static double MULTIPLIER = 0.5;
+	private final static double WRIST_MULTIPLIER = 0.5;
 
 	public PickupControl() {
 		// Use requires() here to declare subsystem dependencies
@@ -51,19 +51,19 @@ public class PickupControl extends Command {
 		double zInput = Robot.oi.getOperatorZ();
 		zInput = (Math.abs(zInput) < Z_THRESHOLD ? 0
 				: (Math.signum(zInput) * ((Math.abs(zInput) - Z_THRESHOLD) / (1 - Z_THRESHOLD))));
-		Robot.pickup.setWrist(MULTIPLIER * zInput);
+		Robot.pickup.setWrist(WRIST_MULTIPLIER * zInput);
 
 		// Grab logic
-		if (Robot.oi.operatorStick.getRawButtonPressed(1)) {
-			Robot.pickup.extend();
-		}
-		if (Robot.oi.operatorStick.getRawButtonPressed(2)) {
-			Robot.pickup.unextend();
-
-		}
-		if (Robot.oi.operatorStick.getRawButtonReleased(1) || Robot.oi.operatorStick.getRawButtonReleased(2)) {
-			Robot.pickup.die();
-		}
+//		if (Robot.oi.operatorStick.getRawButtonPressed(1)) {
+//			Robot.pickup.extend();
+//		}
+//		if (Robot.oi.operatorStick.getRawButtonPressed(2)) {
+//			Robot.pickup.unextend();
+//
+//		}
+//		if (Robot.oi.operatorStick.getRawButtonReleased(1) || Robot.oi.operatorStick.getRawButtonReleased(2)) {
+//			Robot.pickup.die();
+//		}
 
 	}
 

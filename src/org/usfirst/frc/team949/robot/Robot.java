@@ -43,11 +43,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		this.chooser.addDefault("Default Auto", new JoyStickDrive());
-		SmartDashboard.putData("Auto mode", chooser);
-		CameraServer.getInstance().addAxisCamera("10.9.49.104");
-		SmartDashboard.putNumber("Arm Angle", 0);
-		SmartDashboard.getData("Arm Angle");
+//		this.chooser.addDefault("Default Auto", new JoyStickDrive());
+//		SmartDashboard.putData("Auto mode", chooser);
+//		CameraServer.getInstance().addAxisCamera("10.9.49.104");
+//		SmartDashboard.putNumber("Arm Angle", 0);
+//		SmartDashboard.getData("Arm Angle");
 		
 	}
 
@@ -225,8 +225,8 @@ public class Robot extends TimedRobot {
 	}
 
 	
-	private double leftMaxVelocity; // TODO: ONLY FOR TRAJECTORY CONSTANT TESTING. PLEASE DELETE LATER.
-	private double rightMaxVelocity; // TODO: ONLY FOR TRAJECTORY CONSTANT TESTING. PLEASE DELETE LATER.
+//	private double leftMaxVelocity; // TODO: ONLY FOR TRAJECTORY CONSTANT TESTING. PLEASE DELETE LATER.
+//	private double rightMaxVelocity; // TODO: ONLY FOR TRAJECTORY CONSTANT TESTING. PLEASE DELETE LATER.
 	
 	/**
 	 * This function is called periodically during operator control
@@ -235,16 +235,16 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run(); // Keep this
 		
-		double leftRate = driveTrain.getLeftVelocity();
-		double rightRate = driveTrain.getRightVelocity();
-		if(leftRate > leftMaxVelocity) 
-		{
-			leftMaxVelocity = leftRate;
-		}
-		if(rightRate > rightMaxVelocity) 
-		{
-			rightMaxVelocity = rightRate;
-		}
+//		double leftRate = driveTrain.getLeftVelocity();
+//		double rightRate = driveTrain.getRightVelocity();
+//		if(leftRate > leftMaxVelocity) 
+//		{
+//			leftMaxVelocity = leftRate;
+//		}
+//		if(rightRate > rightMaxVelocity) 
+//		{
+//			rightMaxVelocity = rightRate;
+//		}
 		
 	}
 

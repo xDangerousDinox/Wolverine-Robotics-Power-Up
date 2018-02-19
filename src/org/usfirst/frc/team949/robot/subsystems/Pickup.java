@@ -31,12 +31,12 @@ public class Pickup extends Subsystem {
 		this.leftPickupMotor = new WPI_TalonSRX(RobotMap.leftPickupMotor);
 		this.wristMotor = new WPI_TalonSRX(RobotMap.wristMotor);
 
-		compressor = new Compressor();
-		handRotator = new DoubleSolenoid(RobotMap.handRotatorSolenoidChannelIn, RobotMap.handRotatorSolenoidChannelOut);
+//		compressor = new Compressor();
+//		handRotator = new DoubleSolenoid(RobotMap.handRotatorSolenoidChannelIn, RobotMap.handRotatorSolenoidChannelOut);
 
 		rightPickupMotor.setInverted(true);
 		leftPickupMotor.setInverted(false);
-		compressor.setClosedLoopControl(true);
+		//compressor.setClosedLoopControl(true);
 	}
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
