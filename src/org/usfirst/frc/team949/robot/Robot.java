@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team949.robot;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -43,6 +44,14 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+		
+		UsbCamera mainCamera = CameraServer.getInstance().startAutomaticCapture();
+		mainCamera.setFPS(60);
+		mainCamera.setResolution(1000, 1000);
+//		UsbCamera mainCamera = new UsbCamera("cam0", 0);
+//		mainCamera.setResolution(100, 200);
+//		mainCamera.setFPS(60); // For gamers
+		
 //		this.chooser.addDefault("Default Auto", new JoyStickDrive());
 //		SmartDashboard.putData("Auto mode", chooser);
 //		CameraServer.getInstance().addAxisCamera("10.9.49.104");
