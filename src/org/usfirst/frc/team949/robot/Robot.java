@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
 	public static OI oi;
 
 	private Command autonomousCommand;
-	private SendableChooser<String> startingPositionChooser = new SendableChooser<>();
+	private SendableChooser<Character> startingPositionChooser = new SendableChooser<>();
 	private SendableChooser<String> targetScoringChooser = new SendableChooser<>();
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -46,7 +46,7 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		
 		UsbCamera driveCamera = CameraServer.getInstance().startAutomaticCapture(0);
-		;
+		
 		driveCamera.setFPS(60);
 		driveCamera.setResolution(300, 300);
 		
@@ -54,12 +54,17 @@ public class Robot extends TimedRobot {
 		armCamera.setFPS(60);
 		armCamera.setResolution(300, 300);
 		
-//		UsbCamera mainCamera = new UsbCamera("cam0", 0);
-//		mainCamera.setResolution(100, 200);
-//		mainCamera.setFPS(60); // For gamers
+		this.startingPositionChooser.addDefault("Left", 'L');
+		this.startingPositionChooser.addObject("Middle", 'M');
+		this.startingPositionChooser.addObject("Right", 'R');
+		SmartDashboard.putData("Auto: Starting Position", this.startingPositionChooser);
 		
-//		this.chooser.addDefault("Default Auto", new JoyStickDrive());
-//		SmartDashboard.putData("Auto mode", chooser);
+		this.targetScoringChooser.addDefault("AutoLine", "AutoLine");
+		this.targetScoringChooser.addDefault("Switch", "Switch");
+		this.targetScoringChooser.addDefault("Scale", "Scale");
+		SmartDashboard.putData("Auto: Target Scoring", this.targetScoringChooser);
+		
+		
 //		CameraServer.getInstance().addAxisCamera("10.9.49.104");
 //		SmartDashboard.putNumber("Arm Angle", 0);
 //		SmartDashboard.getData("Arm Angle");
@@ -94,11 +99,10 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-		char testPosition = 'L'; // L M R TODO: Find a way to do it from SmartDashboard
-		String targetScoring = "Scale"; // Switch Scale AutoLine TODO: Find a way to do it from SmartDashboard
+		char startingPosition = startingPositionChooser.getSelected();
+		String targetScoring = targetScoringChooser.getSelected();
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-//		autonomousCommand = autonomousSwitchLogic(testPosition, targetScoring, gameData);
+		autonomousCommand = autonomousSwitchLogic(startingPosition, targetScoring, gameData);
 		
 //		String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 //		switch(autoSelected) {
@@ -115,6 +119,7 @@ public class Robot extends TimedRobot {
 	}
 	private Command autonomousSwitchLogic(char startingPosition, String targetScoring, String gameData) 
 	{	
+		return new 
 		final char L = 'L';
 		final char M = 'M';
 		final char R = 'R';

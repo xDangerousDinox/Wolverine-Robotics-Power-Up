@@ -77,6 +77,10 @@ public class DriveTrain extends Subsystem {
 		this.drive.tankDrive(leftMoveValue, rightMoveValue);
 	}
 
+	public void stop() {
+		arcade(0.0, 0.0);
+	}
+	
 	// ACCESSORS
 	public double gyroRate() {
 		return this.g.getRate();
@@ -101,5 +105,5 @@ public class DriveTrain extends Subsystem {
 	public double getRightPosition() {
 		return this.r0.getSelectedSensorPosition(0);
 	}
-
+	
 }
