@@ -39,10 +39,10 @@ public class PickupControl extends Command {
 			Robot.pickup.setBothMotors(1.0);
 		} else if (Robot.oi.isOperatorButtonDown(10)) // Right
 		{
-			Robot.pickup.setRotateBothMotors(0.5);
+			Robot.pickup.setRotateBothMotors(0.7);
 		} else if (Robot.oi.isOperatorButtonDown(9)) // Left
 		{
-			Robot.pickup.setRotateBothMotors(-0.5);
+			Robot.pickup.setRotateBothMotors(-0.7);
 		} else {
 			Robot.pickup.stop();
 		}

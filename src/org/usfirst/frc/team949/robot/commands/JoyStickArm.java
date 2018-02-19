@@ -47,7 +47,7 @@ public class JoyStickArm extends Command {
 		{
 			Robot.arm.move(0);
 		}
-		System.out.println(Robot.arm.getEncoderPosition());
+		//System.out.println(Robot.arm.getEncoderPosition());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

@@ -134,8 +134,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		System.out.println(
-				(driveTrain.getLeftVelocity() + driveTrain.getRightVelocity()) / 2 + "\t" + Timer.getFPGATimestamp());
+		//System.out.println(
+			//	(driveTrain.getLeftVelocity() + driveTrain.getRightVelocity()) / 2 + "\t" + Timer.getFPGATimestamp());
 	}
 
 	/**
