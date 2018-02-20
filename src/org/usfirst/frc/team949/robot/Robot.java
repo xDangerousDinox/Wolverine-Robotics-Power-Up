@@ -102,7 +102,7 @@ public class Robot extends TimedRobot {
 		char startingPosition = startingPositionChooser.getSelected();
 		String targetScoring = targetScoringChooser.getSelected();
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
-		autonomousCommand = autonomousSwitchLogic(startingPosition, targetScoring, gameData);
+		//autonomousCommand = autonomousSwitchLogic(startingPosition, targetScoring, gameData);
 		
 //		String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
 //		switch(autoSelected) {
@@ -117,7 +117,7 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}
-	private Command autonomousSwitchLogic(char startingPosition, String targetScoring, String gameData) 
+	/*private Command autonomousSwitchLogic(char startingPosition, String targetScoring, String gameData) 
 	{	
 		return new 
 		final char L = 'L';
