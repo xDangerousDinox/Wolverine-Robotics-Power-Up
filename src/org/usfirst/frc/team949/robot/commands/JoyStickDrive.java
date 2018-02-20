@@ -13,7 +13,7 @@ public class JoyStickDrive extends Command {
 	private final static double Z_THRESHOLD = 0.5;
 
 	private final static double Y_NERF = 1.0;
-	private final static double Z_NERF = 0.9;
+	private final static double Z_NERF = 0.6;
 
 	public JoyStickDrive() {
 		requires(Robot.driveTrain);
