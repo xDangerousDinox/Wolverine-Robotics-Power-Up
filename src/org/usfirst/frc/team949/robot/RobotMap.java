@@ -25,8 +25,7 @@ public class RobotMap {
 	public final static int armMotor = 8;
 	
 	// Climber
-	public final static int climberMotor1 = 4;
-	public final static int climberMotor2 = 5;
+	public final static int climberMotor = 4;
 
 	// PNEUMATICS
 	public final static int handRotatorSolenoidChannelIn = 0;
