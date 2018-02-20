@@ -80,7 +80,7 @@ public class DriveTrain extends Subsystem {
 	public void stop() {
 		arcade(0.0, 0.0);
 	}
-	
+
 	// ACCESSORS
 	public double gyroRate() {
 		return this.g.getRate();
@@ -105,5 +105,24 @@ public class DriveTrain extends Subsystem {
 	public double getRightPosition() {
 		return this.r0.getSelectedSensorPosition(0);
 	}
-	
+
+	public void gyroPTurn(double targetAngle) 
+	{
+		double turn = targetAngle - g.getAngle();
+		final double maximumTurnValue = 0.6;
+		final double kPTurn = 0.05;
+		if ((turn * kPTurn) > maximumTurnValue) {
+			this.arcade(0.0, maximumTurnValue);
+		} else if ((turn * kPTurn) < -maximumTurnValue) {
+			this.arcade(0.0, -maximumTurnValue);
+		} else {
+			this.arcade(0.0, turn * kPTurn);
+		}
+
+	}
+	public boolean angleWithinTolerance(double targetAngle) 
+	{
+		final double tolerance = 1.0;
+		return Math.abs(targetAngle - g.getAngle()) <= tolerance;
+	}
 }

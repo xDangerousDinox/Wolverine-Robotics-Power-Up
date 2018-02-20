@@ -7,34 +7,29 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 /**
  *
  */
-public class HardTurn extends TimedCommand {
+public class HardArmMove extends TimedCommand {
 
-	private double targetAngle;
+	private double moveValue;
 	
-	public HardTurn(double timeout, double targetAngle) {
+	public HardArmMove(double timeout, double moveValue) {
 		super(timeout);
-		requires(Robot.driveTrain);
-		
-		this.targetAngle = targetAngle;
+		// Use requires() here to declare subsystem dependencies
+		requires(Robot.arm);
+		this.moveValue = moveValue;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		Robot.arm.move(moveValue);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.driveTrain.gyroPTurn(targetAngle);
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
-	protected boolean isFinished() {
-		return (super.isTimedOut()) || (Robot.driveTrain.angleWithinTolerance(targetAngle));
-	}
-
-	// Called once after isFinished returns true
+	// Called once after timeout
 	protected void end() {
-		Robot.driveTrain.stop();
+		Robot.arm.move(0.0);
 	}
 
 	// Called when another command which requires one or more of the same

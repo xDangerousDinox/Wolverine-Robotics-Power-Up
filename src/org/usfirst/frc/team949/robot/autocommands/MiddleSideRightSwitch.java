@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class MiddleSideRightSwitch extends CommandGroup {
 
     public MiddleSideRightSwitch() {
-    	addSequential(new HardTurn(0.5, false));
+    	addSequential(new HardTurn(1.0, 90.0));
     	addSequential(new HardMove(0.5));
     	addSequential(new RightSideRightSwitch());
         // Add Commands here:

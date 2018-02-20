@@ -1,17 +1,20 @@
 package org.usfirst.frc.team949.robot.autocommands;
 
+import org.usfirst.frc.team949.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class MiddleSideLeftSwitch extends CommandGroup {
+public class HardWristFoldArmUp extends CommandGroup {
 
-    public MiddleSideLeftSwitch() {
-    	addSequential(new HardTurn(1.0, -90.0)); // TODO: Does ( - ) value actually wrap around?
-    	addSequential(new HardMove(0.5));
-    	addSequential(new HardTurn(1.0, 0.0));
-    	addSequential(new LeftSideLeftSwitch());
+    public HardWristFoldArmUp() {
+    	requires(Robot.arm);
+    	requires(Robot.pickup);
+    	
+    	addSequential(new HardArmMove(1.0, 0.6));
+    	addSequential(new HardWristMove(0.6, 0.5));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
