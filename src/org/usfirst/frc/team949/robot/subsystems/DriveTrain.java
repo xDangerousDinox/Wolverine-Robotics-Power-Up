@@ -7,6 +7,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -110,7 +111,7 @@ public class DriveTrain extends Subsystem {
 	{
 		double turn = targetAngle - g.getAngle();
 		final double maximumTurnValue = 0.6;
-		final double kPTurn = 0.05;
+		final double kPTurn = 0.07;
 		if ((turn * kPTurn) > maximumTurnValue) {
 			this.arcade(0.0, maximumTurnValue);
 		} else if ((turn * kPTurn) < -maximumTurnValue) {
@@ -122,7 +123,8 @@ public class DriveTrain extends Subsystem {
 	}
 	public boolean angleWithinTolerance(double targetAngle) 
 	{
-		final double tolerance = 1.0;
-		return Math.abs(targetAngle - g.getAngle()) <= tolerance;
+		final double tolerance = 3.0;
+		DriverStation.reportWarning("" + g.getAngle(), false);
+		return (Math.abs(targetAngle - g.getAngle()) <= tolerance) && (Math.abs(g.getRate()) < 1);
 	}
 }

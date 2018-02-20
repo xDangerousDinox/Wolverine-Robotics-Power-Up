@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team949.robot.autocommands.HardTurn;
 import org.usfirst.frc.team949.robot.commands.JoyStickDrive;
 
 import org.usfirst.frc.team949.robot.subsystems.Arm;
@@ -45,15 +46,15 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		oi = new OI();
 		
-		UsbCamera driveCamera = CameraServer.getInstance().startAutomaticCapture(0);
-		
-		driveCamera.setFPS(60);
-		driveCamera.setResolution(300, 300);
-		
-		UsbCamera armCamera = CameraServer.getInstance().startAutomaticCapture(1);
-		armCamera.setFPS(60);
-		armCamera.setResolution(300, 300);
-		
+//		UsbCamera driveCamera = CameraServer.getInstance().startAutomaticCapture(0);
+//		
+//		driveCamera.setFPS(60);
+//		driveCamera.setResolution(300, 300);
+//		
+//		UsbCamera armCamera = CameraServer.getInstance().startAutomaticCapture(1);
+//		armCamera.setFPS(60);
+//		armCamera.setResolution(300, 300);
+//		
 		this.startingPositionChooser.addDefault("Left", 'L');
 		this.startingPositionChooser.addObject("Middle", 'M');
 		this.startingPositionChooser.addObject("Right", 'R');
@@ -78,7 +79,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		Robot.driveTrain.gyroCalibrate(); // TODO: Calibration happens on each disable. Could be dangerous.
 	}
 
 	@Override
@@ -99,9 +100,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		char startingPosition = startingPositionChooser.getSelected();
-		String targetScoring = targetScoringChooser.getSelected();
-		String gameData = DriverStation.getInstance().getGameSpecificMessage();
+//		char startingPosition = startingPositionChooser.getSelected();
+//		String targetScoring = targetScoringChooser.getSelected();
+//		String gameData = DriverStation.getInstance().getGameSpecificMessage();
 		//autonomousCommand = autonomousSwitchLogic(startingPosition, targetScoring, gameData);
 		
 //		String autoSelected = SmartDashboard.getString("Auto Selector", "Default"); 
@@ -111,8 +112,8 @@ public class Robot extends TimedRobot {
 //		case "Default Auto": 
 //		default:
 //		autonomousCommand = new ExampleCommand(); break; }
-		 
-
+		autonomousCommand = new HardTurn(10.0, 180.0);
+		
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();

@@ -2,6 +2,7 @@ package org.usfirst.frc.team949.robot.autocommands;
 
 import org.usfirst.frc.team949.robot.Robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.TimedCommand;
 
 /**
@@ -35,6 +36,7 @@ public class HardTurn extends TimedCommand {
 	// Called once after isFinished returns true
 	protected void end() {
 		Robot.driveTrain.stop();
+		DriverStation.reportError("Hard Turn Done", false);
 	}
 
 	// Called when another command which requires one or more of the same
