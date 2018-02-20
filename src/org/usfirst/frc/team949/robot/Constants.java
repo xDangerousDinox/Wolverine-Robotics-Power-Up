@@ -6,6 +6,9 @@ public class Constants {
 	public final static double wheelbase = 23.5;
 	public final static int wheel_diameter = 6;
 	
+	//Stored in encoder counts
+	public final static int MAG_ENCODER_CPR = 4096;
+	
 	// TODO: Why is not static?
 	public double in2cm(double in)
 	{
@@ -51,4 +54,9 @@ public class Constants {
         }
         return new double[] { leftMotorOutput, rightMotorOutput };
     }
+	
+	public static double convertCountToIn(double sourceCounts) {
+		return sourceCounts * (wheel_diameter * Math.PI) / MAG_ENCODER_CPR;
+	}
+	
 }
